@@ -14,7 +14,7 @@ int angle = 0;
 int maxSpeed = 0;
 char bluetoothData[16];
 
-const byte numChars = 32;
+const byte numChars = 64;
 char receivedChars [numChars];
 char tempChars[numChars];
 
