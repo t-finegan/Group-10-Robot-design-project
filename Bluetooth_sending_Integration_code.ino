@@ -9,7 +9,6 @@ int motorForwardPin = 3;//digitalWrite will go to D3
 int motorReversePin = 4;//digitalWrite will go to D4
 
 
-
 int angle = 0;
 int maxSpeed = 0;
 char bluetoothData[16];
@@ -109,12 +108,32 @@ void parseData() {      // split the data into its parts
 }
 
 void forkliftMovement()  {
-  forkliftTilt = int(trunc(tiltFloat);
-  forkliftTilt = forkliftTilt + 90;
+  forkliftTilt = tiltFloat + 90;
+
+  if(forkliftTilt>135)
+  {
+
+    if(pos<180)
+    {
+      pos=pos+5;//adjust value after testing
+    }
+    myservo.write(pos);
+
+  }
+  if(forkliftTilt<45)
+  {
+
+    if(pos>0)
+    {
+      pos=pos-5;
+    }
+    myservo.write(pos)
+
+  }
   
   forkliftVerticalMovement = int(trunc(tiltFloat);
   
-  myservo.write(forkliftTilt);
+
   
   if(forkliftVerticalMovement>50)//needs to be changed for deadspace on joystick
   {
